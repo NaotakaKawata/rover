@@ -137,6 +137,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/sim2_lecture_node.cpp)
 add_executable(rover_omni_commander src/sim2_omni_commander.cpp)
 add_executable(rover_omni_odometry src/sim2_omni_odometry.cpp)
+add_executable(rover_serial src/serial.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -159,6 +160,13 @@ target_link_libraries(rover_omni_odometry
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(rover_serial
+  ${catkin_LIBRARIES}
+)
+
+#target_link_libraries(rover_teleop_omni
+#  ${catkin_LIBRARIES}
+#)
 #############
 ## Install ##
 #############
