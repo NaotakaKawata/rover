@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <node name="rover_teleop" pkg="rover" type="teleop_serial.py" output="screen"/>
+  <node name="rover_teleop" pkg="rover" type="teleop_serial.py" output="screen" launch-prefix = "xterm -e"/>
   <node name="rover_serial" pkg="rover" type="serial" output="screen"/>
 </launch>
