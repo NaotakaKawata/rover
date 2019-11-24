@@ -49,6 +49,7 @@ ROSでArduinoにシリアルメッセージを送ってくれるだけである�
 arduino_scripts/arduino_serialをArduino IDEを用いてローバーに書き込む。その後以下のコマンドを実行
 
 ```shell
+$ chmod +x teleop_serial.py 
 $ roslaunch rover rover_serial.launch
 ```
 
@@ -59,6 +60,10 @@ $ roslaunch rover rover_serial.launch
 rosserialを用いてArduinoをROSのように見せているバージョン。他のノードと通信が可能。
 
 ```shell
+$ chmod +x teleop_keyboard_omni3.py 
+$ chmod +x serial_node.py 
 $ roslaunch rover rover_ros.launch
 ```
+
+
 
