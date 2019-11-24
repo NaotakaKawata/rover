@@ -21,5 +21,4 @@
         output="screen" ns="/odm_robot"
         args="joint_controller0 joint_controller1 joint_controller2 joint_state_controller"/>
   <node name="ros_contllor" pkg="rover" type="teleop_keyboard_omni3.py" output="screen" launch-prefix="xterm -e" />
-<node name="rover_teleop" pkg="rover" type="teleop_keyboard_omni3.py" output="screen" launch-prefix = "xterm -e"/>
 </launch>
