@@ -12,15 +12,9 @@ msg = """
 Reading from the keyboard !
 ---------------------------
 Moving around:
-   u    i    o
-   j    k    l
-   m    ,    .
-
-For Holonomic mode (strafing), hold down the shift key:
----------------------------
-   U    I    O
-   J    K    L
-   M    <    >
+   X    i    X
+   j    X    l
+   X    ,    X
 
 
 anything else : stop
@@ -31,7 +25,8 @@ CTRL-C to quit
 """
 
 moveBindings = {
-        #'ex':(left,back,right)
+        #'ex':(left,right,back)
+        #'myrover':{}
         'i':(-1,0,1),
         'o':(-1,1,0),
         'j':(1,1,1),
@@ -45,9 +40,9 @@ moveBindings = {
         'J':(1,-2,1),
         'L':(-1,2,-1),
         'U':(0,-1,1),
-        '<':(1,0,-1),
-        '>':(0,1,-1),
-        'M':(1,-1,0),
+        '<':(1,0,0),
+        '>':(0,1,0),
+        'M':(0,0,1),
     }
 
 speedBindings={
@@ -69,9 +64,9 @@ if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 
     rospy.init_node('vel_Publisher')
-    publ = rospy.Publisher("/odm_robot/joint_controller0/command", Float64, queue_size=1)
-    pubb = rospy.Publisher("/odm_robot/joint_controller1/command", Float64, queue_size=1)
-    pubr = rospy.Publisher("/odm_robot/joint_controller2/command", Float64, queue_size=1)
+    publ = rospy.Publisher("/rover/joint_controller0/command", Float64, queue_size=1)
+    pubr = rospy.Publisher("/rover/joint_controller1/command", Float64, queue_size=1)
+    pubb = rospy.Publisher("/rover/joint_controller2/command", Float64, queue_size=1)
 
 
     speed = 1.0

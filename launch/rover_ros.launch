@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node name="rover_teleop" pkg="rover" type="teleop_keyboard_omni3.py" output="screen" launch-prefix = "xterm -e">
+    <remap from="odm_robot/joint_controller0/command" to="rover/joint_controller0/command" />
+    <remap from="odm_robot/joint_controller1/command" to="rover/joint_controller1/command" />
+    <remap from="odm_robot/joint_controller2/command" to="rover/joint_controller2/command" />
+  </node>
+
+  <node name="rover_serial_node" pkg="rover" type="serial_node.py" output="screen">
+    <param name="port" value="/dev/ttyUSB0" />
+    <param name="baud" value="115200" />
+  </node>
+
+</launch>
