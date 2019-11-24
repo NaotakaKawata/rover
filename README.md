@@ -30,15 +30,35 @@ $ catkin_make
 
 
 
-バーチャル空間上でのローバーを動かしたい場合
+## バーチャル空間上でのローバーを動かしたい場合
 
 ```shell
 $ roslaunch rover rover_vertual.launch
 ```
 
-実機でのローバーを動かしたい場合、arduino_scripts/arduino_serial.inoをArduino IDEを用いて書き込む。その後以下のコマンドを実行
+
+
+## 実機でのローバーを動かしたい場合
+
+### 簡易版
+
+ROSでArduinoにシリアルメッセージを送ってくれるだけである。とりあえずArduinoはいじらずにROSメッセージで動くか確認したい人用。それ以外の方はROS版を使ってください。
+
+
+
+arduino_scripts/arduino_serialをArduino IDEを用いてローバーに書き込む。その後以下のコマンドを実行
 
 ```shell
 $ roslaunch rover rover_serial.launch
+```
+
+
+
+### ROS版
+
+rosserialを用いてArduinoをROSのように見せているバージョン。他のノードと通信が可能。
+
+```shell
+$ roslaunch rover rover_ros.launch
 ```
 
