@@ -2,36 +2,38 @@
 <robot name="odm_robot" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find rover)/xacro/odm_common.xacro"/>
   <xacro:include filename="$(find rover)/xacro/odm_omni_wheel_set1.xacro"/>
+  <xacro:include filename="$(find rover)/xacro/laser_macro.xacro" />
+  <xacro:include filename="$(find rover)/xacro/camera_macro.xacro" />
 
   <link name="base_link"/>
 
   <joint name="body_joint" type="fixed">
     <parent link="base_link"/>
     <child  link="body_link"/>
-    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
   </joint>
   <link name="body_link">
     <visual>
       <geometry>
-        <cylinder length ="0.2" radius="0.05" />
+        <cylinder length ="0.12" radius="0.18" />
       </geometry>
       <material name="gray"/>
     </visual>
     <collision>
       <geometry>
-        <cylinder length ="0.2" radius="0.05" />
+        <cylinder length ="0.12" radius="0.18" />
       </geometry>
     </collision>
     <inertial>
       <mass value="2.0"/>
       <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
-    </inertial>  
+    </inertial>
   </link>
 
   <joint name="wheel0_attach_joint" type="fixed">
     <parent link="base_link"/>
     <child  link="wheel0_attach_link"/>
-    <origin xyz="${0.07*cos(radians(60))} ${0.07*sin(radians(60))} 0.019" rpy="0 0 ${radians(60)}"/>
+    <origin xyz="${0.17*cos(radians(60))} ${0.17*sin(radians(60))} 0.019" rpy="0 0 ${radians(60)}"/>
   </joint>
   <link name="wheel0_attach_link" />
   <xacro:omni_wheel_set prefix="wheel0" parent="wheel0_attach_link" />
@@ -39,7 +41,7 @@
   <joint name="wheel1_attach_joint" type="fixed">
     <parent link="base_link"/>
     <child  link="wheel1_attach_link"/>
-    <origin xyz="${0.07*cos(radians(180))} ${0.07*sin(radians(180))} 0.019" rpy="0 0 ${radians(180)}"/>
+    <origin xyz="${0.17*cos(radians(180))} ${0.17*sin(radians(180))} 0.019" rpy="0 0 ${radians(180)}"/>
   </joint>
   <link name="wheel1_attach_link" />
   <xacro:omni_wheel_set prefix="wheel1" parent="wheel1_attach_link" />
@@ -47,11 +49,13 @@
   <joint name="wheel2_attach_joint" type="fixed">
     <parent link="base_link"/>
     <child  link="wheel2_attach_link"/>
-    <origin xyz="${0.07*cos(radians(300))} ${0.07*sin(radians(300))} 0.019" rpy="0 0 ${radians(300)}"/>
+    <origin xyz="${0.17*cos(radians(300))} ${0.17*sin(radians(300))} 0.019" rpy="0 0 ${radians(300)}"/>
   </joint>
   <link name="wheel2_attach_link" />
   <xacro:omni_wheel_set prefix="wheel2" parent="wheel2_attach_link" />
 
+  <xacro:laser_macro prefix="front_laser" parent="base_link" xyz="0 0 0.2"/>
+  <xacro:camera_macro prefix="front_camera" parent="base_link" xyz="0 0 0.4"/>
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/odm_robot</robotNamespace>
