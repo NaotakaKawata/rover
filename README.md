@@ -33,7 +33,7 @@ $ catkin_make
 ## バーチャル空間上でのローバーを動かしたい場合
 
 ```shell
-$ roslaunch rover rover_vertual.launch
+$ roslaunch rover rover_virtual.launch
 ```
 
 
@@ -70,4 +70,12 @@ $ roslaunch rover rover_ros.launch
 ```
 
 
+
+## カメラとかLIDARなどのセンサを試したい時
+
+最初の起動ではgazebo上での部屋のモデルをダウンロードするため、すこし時間がかかります。
+
+```shell
+$ roslaunch rover rover_vertual_sensor.launch
+```
 

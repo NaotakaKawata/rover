@@ -4,13 +4,16 @@
   <arg name="rvizconfig" default="$(find rover)/rviz/rover_sensor.rviz" />
   <param name="robot_description" command="$(find xacro)/xacro $(arg model) --inorder"/>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <include file="$(find gazebo_ros)/launch/willowgarage_world.launch">
+  </include>
+
+  <!--include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
-  </include>
+  </include-->
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model odm_robot" />
 
@@ -44,6 +47,6 @@
     <param name="world_frame" value="odom" />
   </node>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" ns="/odm_robot"/>
-  <!--node name="ros_contllor" pkg="rover" type="teleop_keyboard_omni3.py" output="screen" launch-prefix="xterm -e" /-->
+  <node name="ros_contllor" pkg="rover" type="teleop_keyboard_omni3.py" output="screen" launch-prefix="xterm -e" >
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
 </launch>

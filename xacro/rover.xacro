@@ -54,8 +54,8 @@
   <link name="wheel2_attach_link" />
   <xacro:omni_wheel_set prefix="wheel2" parent="wheel2_attach_link" />
 
-  <xacro:laser_macro prefix="front_laser" parent="base_link" xyz="0 0 0.2"/>
-  <xacro:camera_macro prefix="front_camera" parent="base_link" xyz="0 0 0.4"/>
+  <xacro:laser_macro prefix="front_laser" parent="body_link" xyz="0 0 0.1"/>
+  <xacro:camera_macro prefix="front_camera" parent="body_link" xyz="0 0 0.1"/>
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/odm_robot</robotNamespace>
